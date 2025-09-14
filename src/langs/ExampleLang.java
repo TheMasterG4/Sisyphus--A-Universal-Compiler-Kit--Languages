@@ -1,15 +1,18 @@
 package langs;
 
-public class ExampleLang extends Language{
+import langs.j.java.Example;
+import tools.universalcompiler.source.files.CharSourceFile;
+import tools.universalcompiler.source.Source;
+
+import java.io.File;
+
+public class ExampleLang extends Language<CharSourceFile>{
     public ExampleLang(){
-        super("examlang");
+        extension="example";
+        this.solvers = new Example[]{new Example()};
     }
     @Override
-    public void loadSymbols(){
-
-    }
-    @Override
-    public void loadPatterns(){
-
+    public Source getSourceFile(File file) {
+        return new CharSourceFile(file);
     }
 }
